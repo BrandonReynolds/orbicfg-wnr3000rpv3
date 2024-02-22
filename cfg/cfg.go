@@ -103,7 +103,7 @@ func Encrypt(rawConfig []byte, magic uint32) ([]byte, error) {
 		binary.LittleEndian.PutUint32(ct[i:], result)
 	}
 	encryptedConfig := append(header.Bytes(), ct...)
-	return prependJunk(encryptedConfig), nil
+	return encryptedConfig, nil
 }
 
 func ToJSON(rawConfig []byte) ([]byte, error) {
